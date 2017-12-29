@@ -9,10 +9,9 @@ class GBoard {
    private JPanel myPanel = new JPanel();
    @SuppressWarnings("unused")
    private static final long serialVersionUID = 0312315235511L;
-   public static int vgap   = 0;
-   public static int hgap   = 0;
-   public static int on     = 1;
-   public static int off    = 0;
+   private final boolean     alive            = true;
+   public static int         vgap             = 0;
+   public static int         hgap             = 0;
 
    private int       boardSize = 20;
    Gcell             gc[][];
@@ -32,8 +31,8 @@ class GBoard {
          for (int j = 0; j < boardSize; j++) {
             gc[i][j] = new Gcell();
             gc[i][j].setCoords(i, j);
+            gc[i][j].setState(!alive); // INITIALIZE CELLS TO !ALIVE
             myPanel.add(gc[i][j]);
-            gc[i][j].setState(off); // INITIALIZE CELLS TO OFF
          } // j
       } // i
       this.initBoard();
@@ -47,14 +46,14 @@ class GBoard {
    // INITIALIZE THE BOARD WITH A GLIDER AND A BLINKER
    public void initBoard() {
       clearBoard();
-      gc[2][4].setState(on);
-      gc[2][5].setState(on);
-      gc[2][6].setState(on);
-      gc[7][5].setState(on);
-      gc[7][6].setState(on);
-      gc[7][7].setState(on);
-      gc[8][7].setState(on);
-      gc[9][6].setState(on);
+      gc[2][4].setState(alive);
+      gc[2][5].setState(alive);
+      gc[2][6].setState(alive);
+      gc[7][5].setState(alive);
+      gc[7][6].setState(alive);
+      gc[7][7].setState(alive);
+      gc[8][7].setState(alive);
+      gc[9][6].setState(alive);
    } // iBoard()
 
    public void newBoard() {  // TODO: Create new board.
@@ -66,7 +65,7 @@ class GBoard {
    // RESET THE POSITIONS ON THE GAME BOARD USING THE NEW BOARD POSITIONS
    public void nexGen() {
       int i, j;
-      int[][] newboard = new int[boardSize][boardSize];
+      boolean[][] newboard = new boolean[boardSize][boardSize];
       for (i = 0; i < boardSize; i++) {
          for (j = 0; j < boardSize; j++) {
             newboard[i][j] = gc[i][j].getNextState(this);
@@ -79,14 +78,14 @@ class GBoard {
       } // i
    } // nexGen()
 
-   public int sendCellState(int x, int y) {
+   public boolean getCellState(int x, int y) {
       return (gc[x][y].getState());
    } // sendCellState
 
    public void clearBoard() {
       for (int i = 0; i < boardSize; i++) {
          for (int j = 0; j < boardSize; j++) {
-            gc[i][j].setState(off);
+            gc[i][j].setState(!alive);
          } // j
       } // i
    } // CLEARBOARD()

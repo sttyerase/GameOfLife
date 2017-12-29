@@ -6,21 +6,19 @@ import javax.swing.*;
 
 public class Gcell extends JButton implements ActionListener {
    private static final long serialVersionUID = 0312315235512L;
-   private int               deadOrAlive;
-   final int                 dead             = 0;
-   final int                 alive            = 1;
-   int                       xcoord, ycoord;
+   private final boolean     alive              = true;
+   private boolean           deadOrAlive        = false;
+   int                       xcoord = 0, ycoord = 0;
    Gcell                     cArray[];
 
    Gcell() {
-      deadOrAlive = dead;
       this.setSize(5, 5);
       this.addActionListener(this);
    } // DEFAULT CONSTRUCTOR
 
-   public int getNextState(GBoard aBoard) {
+   public boolean getNextState(GBoard aBoard) {
       int i, j;
-      int newstate = deadOrAlive;
+      boolean newstate = deadOrAlive;
       int bsize = aBoard.getBsize();
       int xn = 0, yn = 0;
       int sumnb = 0;
@@ -45,23 +43,24 @@ public class Gcell extends JButton implements ActionListener {
             if (i == xcoord && j == ycoord)
                ; // do nothing - don't want self
             else
-               sumnb = sumnb + aBoard.sendCellState(xn, yn);
+            	   if (aBoard.getCellState(xn, yn)) sumnb++;
+               // sumnb = sumnb + aBoard.getCellState(xn, yn);
          } // for j
       } // for i
 
       // TRANSITION RULES
-      if (deadOrAlive == dead && sumnb == 3)
+      if (deadOrAlive == !alive && sumnb == 3)
          newstate = alive;
       else if (deadOrAlive == alive && (sumnb == 2 || sumnb == 3))
          newstate = alive;
       else
-         newstate = dead;
+         newstate = !alive;
 
       return (newstate);
 
    } // getNextState()
 
-   public int getState() {
+   public boolean getState() {
       return (deadOrAlive);
    } // getState()
 
@@ -71,20 +70,16 @@ public class Gcell extends JButton implements ActionListener {
       return 0;
    }
 
-   public int setState(int cs) {
-      deadOrAlive = cs;
-      if (deadOrAlive == alive)
+   public void setState(boolean cellState) {
+      if (cellState)
          setBackground(Color.yellow);
       else
          setBackground(Color.red);
-      return (deadOrAlive);
    } // SETSTATE(INT)
 
    public void actionPerformed(ActionEvent e) {
-      if (deadOrAlive == dead)
-         setState(alive);
-      else
-         setState(dead);
+      if (!alive) { setState(alive); return; }
+      setState(!alive);
    } // ACTIONPERFORMED(ACTIONEVENT)
 
 } // CLASS
