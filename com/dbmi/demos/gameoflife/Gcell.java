@@ -70,16 +70,21 @@ public class Gcell extends JButton implements ActionListener {
       return 0;
    }
 
-   public void setState(boolean cellState) {
-      if (cellState)
+   public void setCellProperties(boolean cellState) {
+	   deadOrAlive = cellState;
+      if (deadOrAlive)
          setBackground(Color.yellow);
       else
          setBackground(Color.red);
+      this.setVisible(true);
+      this.setOpaque(true);
+      if(System.getProperty("os.name").compareTo("Mac OS X") == 0)  this.setBorderPainted(false);
+      // this.setBorderPainted(false);
    } // SETSTATE(INT)
 
    public void actionPerformed(ActionEvent e) {
-      if (!alive) { setState(alive); return; }
-      setState(!alive);
+      if (deadOrAlive == !alive) setCellProperties(alive);
+      else setCellProperties(!alive);
    } // ACTIONPERFORMED(ACTIONEVENT)
 
 } // CLASS

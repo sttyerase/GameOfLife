@@ -31,11 +31,11 @@ class GBoard {
          for (int j = 0; j < boardSize; j++) {
             gc[i][j] = new Gcell();
             gc[i][j].setCoords(i, j);
-            gc[i][j].setState(!alive); // INITIALIZE CELLS TO !ALIVE
+            gc[i][j].setCellProperties(!alive); // INITIALIZE ALL CELLS TO DEAD (!ALIVE)
             myPanel.add(gc[i][j]);
          } // j
       } // i
-      this.initBoard();
+      this.initBoard(); // INITIALIZE THE BOARD WITH A STANDARD SET
       myPanel.repaint();
    }
 
@@ -46,14 +46,14 @@ class GBoard {
    // INITIALIZE THE BOARD WITH A GLIDER AND A BLINKER
    public void initBoard() {
       clearBoard();
-      gc[2][4].setState(alive);
-      gc[2][5].setState(alive);
-      gc[2][6].setState(alive);
-      gc[7][5].setState(alive);
-      gc[7][6].setState(alive);
-      gc[7][7].setState(alive);
-      gc[8][7].setState(alive);
-      gc[9][6].setState(alive);
+      gc[2][4].setCellProperties(alive);
+      gc[2][5].setCellProperties(alive);
+      gc[2][6].setCellProperties(alive);
+      gc[7][5].setCellProperties(alive);
+      gc[7][6].setCellProperties(alive);
+      gc[7][7].setCellProperties(alive);
+      gc[8][7].setCellProperties(alive);
+      gc[9][6].setCellProperties(alive);
    } // iBoard()
 
    public void newBoard() {  // TODO: Create new board.
@@ -73,7 +73,7 @@ class GBoard {
       } // i
       for (i = 0; i < boardSize; i++) {
          for (j = 0; j < boardSize; j++) {
-            gc[i][j].setState(newboard[i][j]);
+            gc[i][j].setCellProperties(newboard[i][j]);
          } // j
       } // i
    } // nexGen()
@@ -85,7 +85,7 @@ class GBoard {
    public void clearBoard() {
       for (int i = 0; i < boardSize; i++) {
          for (int j = 0; j < boardSize; j++) {
-            gc[i][j].setState(!alive);
+            gc[i][j].setCellProperties(!alive);
          } // j
       } // i
    } // CLEARBOARD()
