@@ -59,11 +59,12 @@ public class GOLView extends JFrame{
       controlPanel.add(boardSizeControl);
       controlPanel.add(counterDisplay);
       this.add(controlPanel, BorderLayout.EAST);
-      // ADD MENUS AND ITEMS
+      // ADD ITEMS TO MENUS
       fileMenu.add(initMenuItem);
       fileMenu.add(exitMenuItem);
       controlMenu.add(stepMenuItem);
       controlMenu.add(clearMenuItem);
+      // ADD MENUS TO MENUBAR
       menuBar.add(fileMenu);
       menuBar.add(controlMenu);
       this.setJMenuBar(menuBar);

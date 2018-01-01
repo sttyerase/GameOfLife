@@ -28,7 +28,7 @@ public class GOLModel {
    public void clearBoard(){
       gameBoard.clearBoard();
       generation = 0;
-      fireModelChangedEvent();
+      this.fireModelChangedEvent();
    } // CLEARBOARD()
 
    protected GBoard  newBoard(int boardsize){
@@ -37,6 +37,7 @@ public class GOLModel {
 
    protected void initBoard(){
       gameBoard.initBoard();
+      this.fireModelChangedEvent();
    } // INITBOARD()
 
    public void addModelChangeListener(GOLView view) {
