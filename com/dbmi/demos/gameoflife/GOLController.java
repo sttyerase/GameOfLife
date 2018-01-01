@@ -15,6 +15,7 @@ public class GOLController implements ActionListener{
       theView.getClearMenuItem().addActionListener(this);
       theView.getExitMenuItem().addActionListener(this);
       theView.getStartButton().addActionListener(this);
+      theView.getInitMenuItem().addActionListener(this);
       theView.getBoardSizeControl().addActionListener(this);
    } // CONSTRUCTOR(GOLMODEL,GOLVIEW)
 
