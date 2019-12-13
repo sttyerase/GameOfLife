@@ -11,7 +11,7 @@ public class GOLModel {
 
    GOLModel(){
       this(25);
-   }
+   } // DEFAULT CONSTRUCTOR
 
    GOLModel(int boardsize){
       bsize = boardsize;
@@ -69,7 +69,7 @@ public class GOLModel {
 
    // GETTERS AND SETTERS
    public int getGeneration() {
-      return generation;
+      return this.generation;
    } // GETGENERATION()
 
    public void setGeneration(int generation) {
@@ -77,17 +77,17 @@ public class GOLModel {
    } // SETGENERATION(INT)
 
    public GBoard getGameBoard(){
-      return gameBoard;
+      return this.gameBoard;
    } // GETGAMEBOARD()
 
    public void setGameBoard(GBoard aBoard){
-      gameBoard = aBoard;
+      this.gameBoard = aBoard;
       fireModelChangedEvent();
-   }
+   } // SETGAMEBOARD(GAMEBOARD)
 
    public int getBsize() {
 	return bsize;
-   }
+   } // GETBSIZE()
 
    public boolean shouldRun() {
 		return yesRun;

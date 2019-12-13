@@ -3,7 +3,7 @@ package com.dbmi.demos.gameoflife;
 public class Gameoflife{
    @SuppressWarnings("unused")
    public static void main(String[] args) {
-      int bsize = 30;
+      int bsize = 100;
       try{ // 01
          if (args.length == 1) bsize = Integer.parseInt(args[0]);
       }catch (NumberFormatException nfe){
