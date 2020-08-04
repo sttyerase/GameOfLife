@@ -1,7 +1,6 @@
 package com.dbmi.demos.gameoflife;
 
 public class Gameoflife{
-   @SuppressWarnings("unused")
    public static void main(String[] args) {
       int bsize = 30;
       try{ // 01

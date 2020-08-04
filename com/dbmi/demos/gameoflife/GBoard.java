@@ -6,15 +6,14 @@ import javax.swing.*;
 
 class GBoard {
 
-   private JPanel myPanel = new JPanel();
-   @SuppressWarnings("unused")
-   private static final long serialVersionUID = 0312315235511L;
+   private final JPanel myPanel = new JPanel();
+   private static final long serialVersionUID = 312315235511L;
    private final boolean     alive            = true;
    public static int         vgap             = 0;
    public static int         hgap             = 0;
 
    private int       boardSize = 20;
-   Gcell             gc[][];
+   Gcell[][]         gc;
    GridLayout        ggrid;
 
    public GBoard(){
