@@ -7,24 +7,23 @@ public class GOLView extends JFrame{
    private static final long serialVersionUID = 1L;
    private GOLModel theModel = null;
    // INTERFACE COMPONENTS
-   private JPanel             gBoardPanel      = new JPanel();
-   private JPanel             buttonPanel      = new JPanel();
-   private JPanel             controlPanel     = new JPanel();
-   private GBoard             gBoard           = null;
-   private JButton            startButton      = new JButton("START");
-   private JButton            stepButton       = new JButton("STEP");
-   private JButton            stopButton       = new JButton("STOP");
-   private JButton            clearButton      = new JButton("CLEAR");
-   private JTextField         counterDisplay   = new JTextField("0");
-   private JComboBox<String>  boardSizeControl = new JComboBox<String>();
+   private final JPanel             gBoardPanel      = new JPanel();
+   private final JPanel             buttonPanel      = new JPanel();
+   private final JPanel             controlPanel     = new JPanel();
+   private final JButton            startButton      = new JButton("START");
+   private final JButton            stepButton       = new JButton("STEP");
+   private final JButton            stopButton       = new JButton("STOP");
+   private final JButton            clearButton      = new JButton("CLEAR");
+   private JTextField               counterDisplay   = new JTextField("0");
+   private final JComboBox<String>  boardSizeControl = new JComboBox<String>();
    // MENU COMPONENTS
-   private JMenuBar           menuBar          = new JMenuBar();
-   private JMenu              fileMenu         = new JMenu("File");
-   private JMenu              controlMenu      = new JMenu("Controls");
-   private JMenuItem          exitMenuItem     = new JMenuItem("Exit");
-   private JMenuItem          stepMenuItem     = new JMenuItem("Step");
-   private JMenuItem          clearMenuItem    = new JMenuItem("Clear Board");
-   private JMenuItem          initMenuItem     = new JMenuItem("Initialize");
+   private final JMenuBar           menuBar          = new JMenuBar();
+   private final JMenu              fileMenu         = new JMenu("File");
+   private final JMenu              controlMenu      = new JMenu("Controls");
+   private final JMenuItem          exitMenuItem     = new JMenuItem("Exit");
+   private final JMenuItem          stepMenuItem     = new JMenuItem("Step");
+   private final JMenuItem          clearMenuItem    = new JMenuItem("Clear Board");
+   private final JMenuItem          initMenuItem     = new JMenuItem("Initialize");
 
    GOLView(GOLModel aModel) {
       this.theModel = aModel;
@@ -35,7 +34,7 @@ public class GOLView extends JFrame{
    private void buildDisplay() {
       this.setTitle("Game of Life");
       this.setLayout(new BorderLayout());
-      gBoard = theModel.getGameBoard();
+      GBoard gBoard = theModel.getGameBoard();
       // ADD THE GAME BOARD COMPONENTS
       this.add(gBoardPanel, BorderLayout.CENTER);
       gBoardPanel.setLayout(new BorderLayout());

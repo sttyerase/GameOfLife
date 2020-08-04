@@ -5,11 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Gcell extends JButton implements ActionListener {
-   private static final long serialVersionUID = 0312315235512L;
+   private static final long serialVersionUID = 312315235512L;
    private final boolean     alive              = true;
    private boolean           deadOrAlive        = false;
    int                       xcoord = 0, ycoord = 0;
-   Gcell                     cArray[];
 
    Gcell() {
       this.setSize(5, 5);

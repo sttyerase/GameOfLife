@@ -7,7 +7,7 @@ public class GOLModel {
    private int generation    =  0 ;
    private GBoard gameBoard  =  null;
    private boolean yesRun    =  false;
-   private ArrayList<GOLView> modelChangeListeners = new ArrayList<GOLView>();
+   private final ArrayList<GOLView> modelChangeListeners = new ArrayList<GOLView>();
 
    GOLModel(){
       this(25);
@@ -46,9 +46,9 @@ public class GOLModel {
 
    private void fireModelChangedEvent() {
       GOLView v;
-      for (int i=0; i<modelChangeListeners.size(); i++) {
-        v = modelChangeListeners.get(i);
-        v.processModelChange(this);
+      for (GOLView modelChangeListener : modelChangeListeners) {
+         v = modelChangeListener;
+         v.processModelChange(this);
       }
     } // FIREMODELCHANGEEVENT(OBJECT)
 
